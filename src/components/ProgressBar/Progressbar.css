@@ -1,0 +1,58 @@
+.step-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 9rem; 
+}
+
+.step {
+    width: 50px;
+    border: 1px black solid;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    position: relative;
+    background-color: white;
+    border-radius: 9999px;
+    font-weight: 600;
+    color: black;
+}
+
+.container-fluid {
+    margin-top: 20px;
+}
+
+.step-item:not(:first-child)::before {
+    content: "";
+    width: 100%;
+    background-color: #f3c8c7;
+    position: absolute;
+    height: 10px;
+    right: 50%;
+    top: 25%;
+    transform: translateY(-50%);
+}
+
+.active .step {
+    background-color: #ef4d48;
+    border: none;
+}
+
+.complete .step {
+    background-color: #ef4d48;
+}
+
+.complete p {
+    color: white;
+    text-decoration: underline;
+}
+
+.complete:not(:first-child)::before,
+.active:not(:first-child)::before {
+    background-color: #ef4d48;
+    border: none;
+}
