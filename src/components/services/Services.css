@@ -1,19 +1,29 @@
-body{
-    background-color: #fff; 
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
 }
+
+body{
+    background:linear-gradient(to top,rgb(241, 160, 157) , rgb(255, 255, 255)); 
+    
+}
+
 h1{
     color: #ef4d48;
 }
 .card {
     margin: 10px;
-    border-radius: 15px;
+    border-radius:10% ;
     height: 300px;
     
     transition: transform 0.8s;
 }
 
 .card:hover {
-    transform: translateY(-20px);
+    transform: translateY(-40px);
     box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.8), 0 10px 20px 0 rgba(0, 0, 0, 0.9);
     color: #ef4d48;
 }
