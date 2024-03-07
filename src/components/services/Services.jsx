@@ -1,6 +1,12 @@
-// Services.js
+
+import OptParticuliere from "../OptParticuliere/OptParticuliere";
 import React from "react";
 import "./Services.css";
+<<<<<<< HEAD
+=======
+import { useNavigate } from "react-router-dom";
+
+>>>>>>> origin/main
 export default function Services({ setCurrentStep}) {
   const Services = [
     { id: 1, name: "Marketing Digitale", img: "/images/marketing.jpg" },
@@ -10,11 +16,14 @@ export default function Services({ setCurrentStep}) {
     { id: 5, name: "Montage des vidéos", img: "./images/montage.jpg" },
     { id: 6, name: "Formation/Coaching", img: "./images/coaching.jpg" }
   ];
+  const navigate = useNavigate();
 
-  const handleSave = () => {
-    setCurrentStep(2);
-    
-  };
+const handleSave = (e) => {
+  setCurrentStep(2);
+  navigate('/OptParticuliere');
+  console.log(e.target.value);
+};
+
 
   return (
     <div className="container">
@@ -27,7 +36,7 @@ export default function Services({ setCurrentStep}) {
               <div className="card-body">
                 <h2 className="card-title">{service.name}</h2>
                 <p className="card-text">{service.desc}</p>
-                <button onClick={handleSave} className="btn">Save</button>
+                <button onClick={handleSave}value={service.name} className="btn">Save</button>
               </div>
             </div>
           </div>

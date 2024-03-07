@@ -3,10 +3,13 @@ import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Service from './components/services/Services';
 import Progressbar from './components/ProgressBar/Progressbar';
+<<<<<<< HEAD
 import ClientCategory from './components/ClientCategory/ClientCategory';
 import { Route, Routes, Router } from 'react-router-dom/dist';
 import ClientSousCategory from './components/ClientSousCategory/ClientSousCategory';
 
+=======
+>>>>>>> origin/main
 function App() {
 //   const ClientCategories = [
 //     { "title": "Particulier", "img": "/images/Particulier1.jpg" },
@@ -19,6 +22,7 @@ const Client =[
   {"category":"Association/NGO","souscategory":[{"title":"Prestation","img": "/images/prestation.png"},{"title":"Questions/réponses","img": "/images/qr.png"}],"img": "/images/Particulier1.jpg"}
 ]
   const [currentStep, setCurrentStep] = useState(1);
+<<<<<<< HEAD
   return (
     <div className="App">
       <Progressbar currentStep={currentStep}  />
@@ -31,6 +35,13 @@ const Client =[
       </Routes>
     </Router> */}
       
+=======
+  
+  return (
+    <div className="App">
+      <Progressbar currentStep={currentStep} />
+      <Service setCurrentStep={setCurrentStep} />
+>>>>>>> origin/main
     </div>
   );
 }
