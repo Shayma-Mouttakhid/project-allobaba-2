@@ -1,7 +1,7 @@
 // Services.js
 import React from "react";
 import "./Services.css";
-export default function Services({ setCurrentStep, setComplete }) {
+export default function Services({ setCurrentStep}) {
   const Services = [
     { id: 1, name: "Marketing Digitale", img: "/images/marketing.jpg" },
     { id: 2, name: "Développement web/mobile", img: "/images/web.jpg" },
