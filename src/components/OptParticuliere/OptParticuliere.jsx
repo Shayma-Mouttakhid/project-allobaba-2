@@ -4,7 +4,12 @@ export default function OptParticuliere(){
     
     return (
         <div>
-           <h1>higit </h1> 
+            <form>
+                <h1>higit </h1> 
+                
+            </form>
+           
+
         </div>
     )
 }

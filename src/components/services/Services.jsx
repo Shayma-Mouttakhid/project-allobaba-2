@@ -1,8 +1,8 @@
 
-import OptParticuliere from "../OptParticuliere/OptParticuliere";
+// import OptParticuliere from "../OptParticuliere/OptParticuliere";
 import React from "react";
 import "./Services.css";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 export default function Services({ setCurrentStep}) {
   const Services = [
@@ -13,11 +13,11 @@ export default function Services({ setCurrentStep}) {
     { id: 5, name: "Montage des vidéos", img: "./images/montage.jpg" },
     { id: 6, name: "Formation/Coaching", img: "./images/coaching.jpg" }
   ];
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
 const handleSave = (e) => {
   setCurrentStep(2);
-  navigate('/OptParticuliere');
+  // navigate('/OptParticuliere');
   console.log(e.target.value);
 };
 
