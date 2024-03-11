@@ -1,12 +1,9 @@
 
-import OptParticuliere from "../OptParticuliere/OptParticuliere";
+// import OptParticuliere from "../OptParticuliere/OptParticuliere";
 import React from "react";
 import "./Services.css";
-<<<<<<< HEAD
-=======
 import { useNavigate } from "react-router-dom";
 
->>>>>>> origin/main
 export default function Services({ setCurrentStep}) {
   const Services = [
     { id: 1, name: "Marketing Digitale", img: "/images/marketing.jpg" },
@@ -20,7 +17,7 @@ export default function Services({ setCurrentStep}) {
 
 const handleSave = (e) => {
   setCurrentStep(2);
-  navigate('/OptParticuliere');
+  navigate('/clientCategory');
   console.log(e.target.value);
 };
 
