@@ -8,6 +8,9 @@
 
 body{
     background:linear-gradient(to top,rgb(241, 160, 157) , rgb(255, 255, 255)); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     
 }
 

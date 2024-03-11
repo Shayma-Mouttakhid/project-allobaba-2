@@ -1,10 +1,9 @@
-
-// import OptParticuliere from "../OptParticuliere/OptParticuliere";
-import React from "react";
+// import React, { useState } from "react";
 import "./Services.css";
-// import { useNavigate } from "react-router-dom";
 
-export default function Services({ setCurrentStep}) {
+import { useNavigate } from "react-router-dom";
+
+const Services = ({ setCurrentStep }) => {
   const Services = [
     { id: 1, name: "Marketing Digitale", img: "/images/marketing.jpg" },
     { id: 2, name: "Développement web/mobile", img: "/images/web.jpg" },
@@ -13,14 +12,15 @@ export default function Services({ setCurrentStep}) {
     { id: 5, name: "Montage des vidéos", img: "./images/montage.jpg" },
     { id: 6, name: "Formation/Coaching", img: "./images/coaching.jpg" }
   ];
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-const handleSave = (e) => {
-  setCurrentStep(2);
-  // navigate('/OptParticuliere');
-  console.log(e.target.value);
-};
-
+  const handleSave = (e) => {
+    e.preventDefault()
+    setCurrentStep(2);
+    localStorage.setItem('currentStep', '1'); 
+    navigate('/clientCategorie');
+    console.log(e.target.value);
+  };
 
   return (
     <div className="container">
@@ -33,7 +33,7 @@ const handleSave = (e) => {
               <div className="card-body">
                 <h2 className="card-title">{service.name}</h2>
                 <p className="card-text">{service.desc}</p>
-                <button onClick={handleSave}value={service.name} className="btn">Save</button>
+                <button onClick={handleSave} value={service.name} className="btn">Save</button>
               </div>
             </div>
           </div>
@@ -42,3 +42,5 @@ const handleSave = (e) => {
     </div>
   );
 };
+
+export default Services;

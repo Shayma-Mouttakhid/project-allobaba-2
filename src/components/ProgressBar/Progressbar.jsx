@@ -3,25 +3,31 @@ import "./Progressbar.css";
 
 const Progressbar = ({ currentStep }) => {
   const steps = [
-    "select Service",
-    "Type Client",
-    "Catégorie Client",
-    "Infos Personnels",
-    "Confirmation"
+    {id:1,step:"select Service"},
+    {id:2,step:"Catégorie Client"},
+    {id:3,step:"type client"},
+    {id:4,step:"Infos Personnels"},
+    {id:5,step:"Confirmation"},
+    
   ];
 
   return (
     <div className="container">
       <div className="row justify-content-center">
-        {steps?.map((step, i) => (
+        {steps?.map((step) => (
           <div
-            key={i}
-            className={`step-item position-relative d-flex flex-column justify-content-center align-items-center col-md-auto ${currentStep===i+1 && "active"} ${i+1<currentStep && "complete"}`}
+            key={step.id}
+
+            className={`step-item position-relative d-flex flex-column justify-content-center align-items-center col-md-auto ${
+              currentStep === step.id  && "active"
+            } ${(step.id < currentStep) && "complete"}`}
+
           >
+           
             <div className="step">
-              {i + 1}
+              {step.id}
             </div>
-            <p>{step}</p>
+            <p>{step.step}</p>
           </div>
         ))}
       </div>
