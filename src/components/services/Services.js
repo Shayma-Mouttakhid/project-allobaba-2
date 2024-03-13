@@ -1,9 +1,10 @@
-// import React, { useState } from "react";
+// import OptParticuliere from "../OptParticuliere/OptParticuliere";
+import React , {useEffect} from "react";
 import "./Services.css";
-
 import { useNavigate } from "react-router-dom";
 
-const Services = ({ setCurrentStep }) => {
+export default function Services({ setCurrentStep , setService}) {
+  
   const Services = [
     { id: 1, name: "Marketing Digitale", img: "/images/marketing.jpg" },
     { id: 2, name: "Développement web/mobile", img: "/images/web.jpg" },
@@ -12,22 +13,21 @@ const Services = ({ setCurrentStep }) => {
     { id: 5, name: "Montage des vidéos", img: "./images/montage.jpg" },
     { id: 6, name: "Formation/Coaching", img: "./images/coaching.jpg" }
   ];
-  const navigate = useNavigate();
-
-  const handleSave = (e) => {
-    e.preventDefault()
-    setCurrentStep(2);
-    localStorage.setItem('currentStep', '1'); 
-    navigate('/clientCategorie');
-    console.log(e.target.value);
-  };
-
+  useEffect(()=>setCurrentStep(1)
+  )
+const navigate = useNavigate();
+const handleSave = (e) => {
+  setCurrentStep(2);
+  navigate('/clientCategory');
+  setService(e.target.value)
+  console.log();
+};
   return (
     <div className="container">
       <h1 className="text-center m-5">Our Services</h1>
-      <div className="row">
+      <div  className="row">
         {Services.map((service) => (
-          <div key={service.id} className="col-md-4 mb-4">
+          <div  key={service.id} className="col-md-4 mb-4">
             <div className="card">
               <img className="card-img-top" src={service.img} alt={service.name} />
               <div className="card-body">
@@ -43,4 +43,4 @@ const Services = ({ setCurrentStep }) => {
   );
 };
 
-export default Services;
+// export default Services;

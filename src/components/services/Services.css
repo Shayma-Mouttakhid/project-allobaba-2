@@ -7,7 +7,7 @@
 }
 
 body{
-    background:linear-gradient(to top,rgb(241, 160, 157) , rgb(255, 255, 255)); 
+    background:linear-gradient(  rgb(255, 255, 255)); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -40,6 +40,11 @@ h1{
     padding: 20px;
     text-align: center;
     margin-bottom: 10px;
+    
+    display:flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
 }
 
 .card-title {
@@ -55,14 +60,17 @@ h1{
     background-color:#ef4d48;
     color: #fff;
     border: none;
-    padding: 10px 10px;
-    margin: 10px;
+    padding: 10px 10px; 
+    text-align: center;
+    
+    width: 70px ;
     
 }
 
 .card button:hover {
     background-color:#ef4d48;
-    border:3px solid white;
+    box-shadow: 0 10px 10px 0 rgb(65, 63, 63);
+   
     color: #fff;
 }
 

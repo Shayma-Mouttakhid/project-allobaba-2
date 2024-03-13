@@ -1,44 +1,43 @@
-import React, { useState } from 'react';
-import { Card, Button } from 'react-bootstrap';
+import React  , {useEffect}from 'react';
+import { Card} from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom/dist';
 
-import { Navigate, useNavigate } from 'react-router-dom';
-
-const ClientCategory = ({ setCurrentStep, Client }) => {
-   
-    const [selectedCategory, setSelectedCategory] = useState('');
+const ClientCategory = ({ setCurrentStep, Client, setSelectedCategory }) => {
+    
+    useEffect(()=>setCurrentStep(2)
+  )
     const navigate = useNavigate();
 
-    const handleChooseCategory = (e) => {
-        setSelectedCategory(e.target.value);
-        
-        setCurrentStep(3); 
-        navigate("/ClientSousCategory");
+    const handleChooseCategory = (category) => {
+        setSelectedCategory(category);
+        setCurrentStep(3);
+        navigate('/clientSubCategory');
     };
-    const handleGoBack = (e) => {
+
+    const handleGoBack = () => {
         setSelectedCategory('');
-        Navigate("-1")
         setCurrentStep(1);
-        
-       
+        navigate('/');
     };
 
     return (
-        <div className="container vh-100 ">
-            <div className="container d-flex justify-content-center align-items-center row pt-20">
+        <div className="container">
+            <h1 className=" text-center ">Which category are you?</h1>
+            <div className="container   d-flex justify-content-center align-items-center row p-10">
                 {Client.map((c, index) => (
-                    <div key={index} className="col-md-4 mb-4">
-                        <Card className="shadow text-center">
+                    <div key={index} className="col-md-4 mb-4 ">
+                        <Card className="shadow text-center ">
                             <Card.Img variant="top" src={c.img} alt={`Image for ${c.category}`} />
                             <Card.Body>
                                 <Card.Title>{c.category}</Card.Title>
-                                <Button variant="orange"  value={c.category} onClick={(e) => handleChooseCategory}>Choisir</Button>
+                                <button className="custom-button" onClick={() => handleChooseCategory(c.category)}>Choisir</button>
                             </Card.Body>
                         </Card>
                     </div>
                 ))}
             </div>
             <div className="text-center mt-3">
-                <Button className="btn btn-orange btn-rounded"  onClick={handleGoBack}>Retour</Button>
+                <button className="return-button" onClick={handleGoBack}>Retour</button>
             </div>
         </div>
     );

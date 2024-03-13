@@ -1,0 +1,73 @@
+.Cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    height: 80vh;
+}
+
+.Form {
+    background: linear-gradient(to top, rgb(51, 49, 49), #efb1af);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    color: white;
+}
+
+h1 {
+    color: white;
+}
+
+.inputRow {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+    margin: 10px;
+}
+
+label {
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 10px;
+    text-align: right;
+}
+
+input {
+    padding: 5px;
+    border: none;
+    border-bottom: 2px solid black;
+    background-color: rgb(232, 232, 232);
+    border-radius: 5px;
+}
+
+input:hover {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: rgb(240, 156, 156);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+p {
+    color: red;
+    margin: 5px 0;
+    text-align: center;
+    /* Make the error under the input */
+}
+
+@media screen and (max-width: 768px) {
+    .Form {
+        width: 95%;
+    }
+}
