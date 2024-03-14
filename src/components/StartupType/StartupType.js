@@ -1,12 +1,12 @@
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
-export default function StartupType({ Client, selectedSubCategory, setStartupType, startupType, setCurrentStep }) {
+export default function StartupType({ setCurrentStep }) {
     setCurrentStep(4);
+    const Client = JSON.parse(localStorage.getItem('StoredClient'));
     const navigate = useNavigate();
 
     const handleGoBack = () => {
-        setStartupType('');
         setCurrentStep(3);
         navigate('/clientSubCategory');
     };

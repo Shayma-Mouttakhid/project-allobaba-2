@@ -20,7 +20,7 @@ const Client =[
 ]
 
 // Stockage dans le local storage
-localStorage.setItem('Client', JSON.stringify(Client));
+localStorage.setItem('StoredClient', JSON.stringify(Client));
 const [Form, setForm] = useState({ name: "", lastName: "", Email: "", telephone: "" });
 const [selectedCategory, setSelectedCategory] = useState('');
 const [selectedSubCategory, setSelectedSubCategory] = useState('');

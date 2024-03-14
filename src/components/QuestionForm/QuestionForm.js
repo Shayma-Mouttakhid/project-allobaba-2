@@ -102,7 +102,7 @@ function QuestionForm() {
               {formErrors.votreMessage && <div className="invalid-feedback">{formErrors.votreMessage}</div>}
             </div>
             <div className="text-center m-2">
-              <button type="reset" className="btn btn-secondary">Effacer</button>
+              <button type="reset" className="btn btn-secondary m-2">Effacer</button>
               <button type="submit" className="btn btn-primary m-2">Envoyer</button>
             </div>
           </form>

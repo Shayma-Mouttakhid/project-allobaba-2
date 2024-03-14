@@ -3,14 +3,14 @@ import { Card, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import "../Style/style.css";
 
-export default function ClientSubCategory({ setCurrentStep, Client, selectedSubCategory, setSelectedSubCategory }) {
-    const selectedCategory = localStorage.getItem('category');
+export default function ClientSubCategory({ setCurrentStep}) {
+    const selectedCategory = localStorage.getItem('selectedCategory');
+    const Client = JSON.parse(localStorage.getItem('StoredClient'));
 
     setCurrentStep(3);
     const navigate = useNavigate();
     const handleChooseSubCategory = (subcategory) => {
         localStorage.setItem('SelectedSubCategory', JSON.stringify(subcategory));
-        // setSelectedSubCategory(subcategory);
         setCurrentStep(4);
         if (subcategory === "Start-up") {
             navigate('/startupType');
@@ -19,11 +19,10 @@ export default function ClientSubCategory({ setCurrentStep, Client, selectedSubC
         } else if (subcategory === "Questions/réponses") {  
             navigate('/questionForm')
         } else {
-            navigate('/info');
+            navigate('/Infos');
         }
     };
     const handleGoBack = () => {
-        setSelectedSubCategory('');
         setCurrentStep(2);
         navigate('/clientCategory');
     };

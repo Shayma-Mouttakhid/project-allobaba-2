@@ -1,18 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
-export default function Sectors({ setSelectedSectors, setCurrentStep }) {
+export default function Sectors({ setCurrentStep }) {
     setCurrentStep(4);
     const navigate = useNavigate();
     const storedClient = JSON.parse(localStorage.getItem('Client'));
     const selectedSubCategory = JSON.parse(localStorage.getItem('SelectedSubCategory'));
-    
-    console.log('selectedSubCategory:', selectedSubCategory); // Debugging
-    console.log('storedClient:', storedClient); // Debugging
+
+    const [selectedSector, setSelectedSector] = useState('');
+
+    const handleSectorChange = (event) => {
+        const selectedSector = event.target.value;
+        setSelectedSector(selectedSector);
+        localStorage.setItem('SelectedSector', selectedSector);
+    };
 
     const handleGoBack = () => {
-        setSelectedSectors('');
         setCurrentStep(3);
         navigate('/clientSubCategory');
     };
@@ -24,9 +28,10 @@ export default function Sectors({ setSelectedSectors, setCurrentStep }) {
                 client.subcategory.map(subcategory => (
                     subcategory.title === selectedSubCategory && (
                         <div key={subcategory.title}>
-                            <select>
+                            <select value={selectedSector} onChange={handleSectorChange}>
+                                <option value="">Sélectionner un secteur</option>
                                 {subcategory.secteurs.map((sector, i) => (
-                                    <option key={i}>{sector}</option>
+                                    <option key={i} value={sector}>{sector}</option>
                                 ))}
                             </select>
                         </div>

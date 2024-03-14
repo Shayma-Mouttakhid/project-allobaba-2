@@ -1,20 +1,20 @@
 import { Card, Button} from 'react-bootstrap';
-import React  , {useEffect}from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom/dist';
 
-const ClientCategory = ({ setCurrentStep, Client, setSelectedCategory }) => {
+const ClientCategory = ({ setCurrentStep }) => {
     setCurrentStep(2)
     const navigate = useNavigate();
+    const Client = JSON.parse(localStorage.getItem('StoredClient'));
 
     const handleChooseCategory = (category) => {
-        setSelectedCategory(category);
-        localStorage.setItem('category', category);
+        localStorage.setItem('selectedCategory', category);
         setCurrentStep(3);
         navigate('/clientSubCategory');
     };
 
     const handleGoBack = () => {
-        setSelectedCategory('');
+        localStorage.setItem('category', '');
         setCurrentStep(1);
         navigate('/');
     };
