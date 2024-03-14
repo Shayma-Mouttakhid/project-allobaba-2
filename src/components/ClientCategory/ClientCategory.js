@@ -1,9 +1,9 @@
-import React from 'react';
 import { Card, Button} from 'react-bootstrap';
+import React  , {useEffect}from 'react';
 import { useNavigate } from 'react-router-dom/dist';
 
 const ClientCategory = ({ setCurrentStep, Client, setSelectedCategory }) => {
-    setCurrentStep(2);
+    setCurrentStep(2)
     const navigate = useNavigate();
 
     const handleChooseCategory = (category) => {
