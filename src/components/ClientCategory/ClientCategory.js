@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card} from 'react-bootstrap';
+import { Card, Button} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom/dist';
 
 const ClientCategory = ({ setCurrentStep, Client, setSelectedCategory }) => {
@@ -8,6 +8,7 @@ const ClientCategory = ({ setCurrentStep, Client, setSelectedCategory }) => {
 
     const handleChooseCategory = (category) => {
         setSelectedCategory(category);
+        localStorage.setItem('category', category);
         setCurrentStep(3);
         navigate('/clientSubCategory');
     };
@@ -28,14 +29,14 @@ const ClientCategory = ({ setCurrentStep, Client, setSelectedCategory }) => {
                             <Card.Img variant="top" src={c.img} alt={`Image for ${c.category}`} />
                             <Card.Body>
                                 <Card.Title>{c.category}</Card.Title>
-                                <button className="custom-button" onClick={() => handleChooseCategory(c.category)}>Choisir</button>
+                                <Button className="custom-button" onClick={() => handleChooseCategory(c.category)}>Choisir</Button>
                             </Card.Body>
                         </Card>
                     </div>
                 ))}
             </div>
             <div className="text-center mt-3">
-                <button className="return-button" onClick={handleGoBack}>Retour</button>
+                <Button className="return-button" onClick={handleGoBack}>Retour</Button>
             </div>
         </div>
     );
