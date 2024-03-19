@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from "react";
+import {React, useState}  from "react";
 import { useNavigate } from "react-router-dom";
 import "./Infosform.css";
 
@@ -9,7 +9,7 @@ export default function Infos({ setCurrentStep, setForm,Form }) {
   const [telephoneError, setTelephoneError] = useState("");
   const navigate = useNavigate();
   
-  useEffect(()=>setCurrentStep(4),[])
+  setCurrentStep(4) // removed useEffect because it runs a warning
   const handlechange = (e) => {
     const { id, value } = e.target;
   
@@ -67,11 +67,11 @@ export default function Infos({ setCurrentStep, setForm,Form }) {
       navigate("/Confirmation");
     }
     
-};console.log({nameError});
+}; // removed console log name error
 
    const handleGoBack=()=>{
     setCurrentStep(3)
-    navigate("/clientSubCategory")
+    navigate(-1) // changed navigate("/clientSubCategory") to navigate(-1)
    }
  
  

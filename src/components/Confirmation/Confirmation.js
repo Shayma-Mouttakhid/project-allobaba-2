@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Confirmation.css";
 
@@ -9,9 +9,7 @@ export default function Confirmation({
   selectedSubCategory,
   Service,
 }) {
-  useEffect(() => {
-    setCurrentStep(5);
-  }, []);
+  setCurrentStep(4) // removed useEffect because it runs a warning
 
   const { name, lastName, Email, telephone } = Form;
   const navigate = useNavigate();

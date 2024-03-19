@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import "../Style/style.css";
+import "./ClientSubCategory.css";
 
 export default function ClientSubCategory({ setCurrentStep}) {
     const selectedCategory = localStorage.getItem('selectedCategory');
@@ -28,8 +28,8 @@ export default function ClientSubCategory({ setCurrentStep}) {
     };
 
     return (
-        <div className="container ">
-            <h1 className=" text-center ">Which Subcategory describes you?</h1>
+        <div className="container-subCategory ">
+            <h1 className=" text-center ">Quelle sous-catégorie vous décrit ?</h1>
             <div className="container  d-flex justify-content-center align-items-center row">
                 {Client.map((clientItem, index) => (
                     clientItem.category === selectedCategory && (

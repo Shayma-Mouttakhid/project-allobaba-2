@@ -1,6 +1,7 @@
 import { Card, Button} from 'react-bootstrap';
 import React from 'react';
 import { useNavigate } from 'react-router-dom/dist';
+import "./ClientCategory.css";
 
 const ClientCategory = ({ setCurrentStep }) => {
     setCurrentStep(2)
@@ -21,7 +22,7 @@ const ClientCategory = ({ setCurrentStep }) => {
 
     return (
         <div className="container">
-            <h1 className=" text-center ">Which category are you?</h1>
+            <h1 className=" text-center ">Quelle est votre catégorie ?</h1>
             <div className="container   d-flex justify-content-center align-items-center row p-10">
                 {Client.map((c, index) => (
                     <div key={index} className="col-md-4 mb-4 ">
