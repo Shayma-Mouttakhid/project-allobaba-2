@@ -59,7 +59,9 @@
     color: white;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
 }
-
+.active p {
+    color:black
+}
 .complete p {
     color: #ec5858;
 }

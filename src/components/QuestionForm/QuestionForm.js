@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./QuestionForm.css";
+import emailjs from "@emailjs/browser";
+import "../Style/style.css";
 
 function QuestionForm() {
   const navigate = useNavigate();
@@ -29,10 +31,29 @@ function QuestionForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    //the Email details 
+    const Serviceid="service_w0m2tmi";
+    const Templateid="template_xvdjszo";
+    const publicKey="AL-p2PQ2haf2rWheB";
+    // create a new object that contains the dynamic  template params 
+    const tamplateparams={
+      Nom_Complete:formData.nomComplet,
+      Telephone:formData.numeroTelephone,
+      message:formData.votreMessage,
+      to_name: "Allo Baba Agence"
+    }
+    //send this infos to the email 
+    emailjs.send(Serviceid,Templateid,tamplateparams,publicKey).then((res)=>{
+      console.log("email sent successfully ", res);
+      
+    }).catch((error)=>{
+      console.log("error sending email: " , error );
+    })
+  
     // Validate inputs
     const errors = {};
-    if (!/^[a-zA-Z]+$/.test(formData.nomComplet)) {
-      errors.nomComplet = 'Nom complet ne doit contenir que des lettres.';
+    if (!/^[a-zA-Z]+ [a-zA-Z]+$/.test(formData.nomComplet)) {
+      errors.nomComplet = 'Nom complet doit contenir uniquement des lettres.';
     }
     if (!/^\d+$/.test(formData.numeroTelephone)) {
       errors.numeroTelephone = 'Numéro de téléphone ne doit contenir que des chiffres.';
