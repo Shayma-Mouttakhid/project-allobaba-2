@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useNavigate } from 'react-router-dom/dist';
-import "./ClientCategory.css";
+import "../Style/style.css";
 
 const ClientCategory = ({ setCurrentStep }) => {
     setCurrentStep(2)
@@ -31,7 +31,7 @@ const ClientCategory = ({ setCurrentStep }) => {
         centerMode: true,
         focusOnSelect: true,
         autoplay: true, // Autoplay slides
-        autoplaySpeed: 1500,
+        autoplaySpeed: 2500,
         arrows: false,
     };
 
