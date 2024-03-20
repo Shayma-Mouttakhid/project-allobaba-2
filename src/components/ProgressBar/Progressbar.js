@@ -5,8 +5,8 @@ import "./Progressbar.css";
 const Progressbar = ({ currentStep, setCurrentStep }) => {
   const steps = [
     { id: 1, step: "Service", path: "/" },
-    { id: 2, step: "Client Category", path: "/clientCategory" },
-    { id: 3, step: "Client Sub Category", path: "/clientSubCategory" },
+    { id: 2, step: "Catégorie", path: "/clientCategory" },
+    { id: 3, step: "Sous Catégorie", path: "/clientSubCategory" },
     { id: 4, step: "Infos Personnels", path: "/Infos" },
     { id: 5, step: "Confirmation", path: "/Confirmation" },
   ];

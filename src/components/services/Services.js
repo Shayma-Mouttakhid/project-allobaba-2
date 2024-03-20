@@ -31,7 +31,7 @@ export default function Services({ setCurrentStep, setService }) {
     dots: false,
     infinite: true,
     speed: 1000,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 0,
     centerMode: true,
     focusOnSelect: true,
@@ -54,13 +54,13 @@ export default function Services({ setCurrentStep, setService }) {
 
   return (
     <div className="container-fluid">
-      <h1 className="text-center text-dark m-5">Our Services</h1>
+      <h1 className="text-center text-dark m-5">Nos Services </h1>
       <Slider {...settings}>
         {Services.map((service) => (
           <div key={service.id} className="col-md-4 mb-4 m-10 ">
             <div className="card" style={{ backgroundImage: `url(${service.img})` }}>
               <div className="card-overlay">
-                <h2 className="card-title">{service.name}</h2>
+                <h2 className="card-title" >{service.name}</h2>
                 <button onClick={() => handleSave(service.name)} className="btn">
                   Save
                 </button>
