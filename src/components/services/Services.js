@@ -17,7 +17,7 @@ export default function Services({ setCurrentStep, setService }) {
 
   useEffect(() => {
     setCurrentStep(1);
-  }, []);
+  });
 
   const navigate = useNavigate();
   const handleSave = (name) => {
@@ -31,7 +31,7 @@ export default function Services({ setCurrentStep, setService }) {
     dots: false,
     infinite: true,
     speed: 1000,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 0,
     centerMode: true,
     focusOnSelect: true,

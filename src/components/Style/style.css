@@ -9,9 +9,10 @@ h1 {
 }
 
 .card {
-  width: 250px;
+  width: 200px;
+  opacity:-0.5 #000;
   height: 250px;
-  margin: 20px;
+  margin: 10px;
   background-size: cover;
   background-position: center;
   border-radius: 20px;
