@@ -1,7 +1,6 @@
 import './App.css';
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import Service from './components/services/Services';
 import Infos from './components/infosform/Infosform';
 import Progressbar from './components/ProgressBar/Progressbar';

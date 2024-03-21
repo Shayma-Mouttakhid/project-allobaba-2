@@ -43,7 +43,7 @@ export default function ClientSubCategory({ setCurrentStep }) {
 
     return (
         <div className="container-fluid">
-            <h1 className="text-center text-dark m-5">Quelle est votre sous catégorie?</h1>
+            <h1 className="text-center text-dark">Quelle est votre sous catégorie?</h1>
             <div className="d-none d-md-block">
                 {Client.map((clientItem, index) => (
                     clientItem.category === selectedCategory && (
