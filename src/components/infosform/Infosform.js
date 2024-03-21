@@ -17,7 +17,7 @@ export default function Infos({ setCurrentStep, setForm, Form }) {
     if (storedForm) {
       setForm(JSON.parse(storedForm));
     }
-  }, []);
+  });
 
   const handlechange = (e) => {
     const { id, value } = e.target;

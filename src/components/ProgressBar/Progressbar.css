@@ -4,8 +4,6 @@
     box-sizing: border-box;
 
 }
-
-
 .step-item {
     position: relative;
     display: flex;
@@ -14,6 +12,8 @@
     align-items: center;
     width: 9rem;
     margin-bottom: 20px; 
+    font-family:Courier New;
+   
 }
 
 .step {
@@ -27,7 +27,6 @@
     position: relative;
     background-color: white;
     border-radius: 50%;
-    font-weight: 600;
     color: black;
     border: 1px solid black;
 }

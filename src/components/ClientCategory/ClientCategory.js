@@ -37,7 +37,8 @@ const ClientCategory = ({ setCurrentStep }) => {
 
     return (
         <div className="container-fluid">
-            <h1 className="text-center text-dark m-5">Quelle est votre catégorie ?</h1>
+            <h1 className="text-center text-dark ">Which category are you?</h1>
+
             <div className="d-none d-md-block">
                 {/* Display cards in a row on desktop screens */}
                 <div className="row justify-content-center">
