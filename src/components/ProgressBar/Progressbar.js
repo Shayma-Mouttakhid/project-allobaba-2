@@ -23,7 +23,8 @@ const Progressbar = ({ currentStep, setCurrentStep }) => {
             key={step.id}
             className={`step-item position-relative d-flex flex-column justify-content-center align-items-center col-md-auto ${
               currentStep === step.id && "active"
-            } ${(step.id < currentStep) && "complete"}`}
+            } ${(currentStep>step.id) && "complete"} ${(currentStep===6) && "complete"} `
+              }
             // onClick={() => handleStepClick(step.id)}
           >
             <div className="step">{step.id}</div>

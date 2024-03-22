@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./Infosform.css";
 
 export default function Infos({ setCurrentStep, setForm, Form }) {
@@ -9,15 +11,14 @@ export default function Infos({ setCurrentStep, setForm, Form }) {
   const [telephoneError, setTelephoneError] = useState("");
   const navigate = useNavigate();
 
-
   // Retrieve form data from local storage on component mount
   useEffect(() => {
-    setCurrentStep(4)
+    setCurrentStep(4);
     const storedForm = localStorage.getItem("Form");
     if (storedForm) {
       setForm(JSON.parse(storedForm));
     }
-  });
+  }, []);
 
   const handlechange = (e) => {
     const { id, value } = e.target;
@@ -26,60 +27,58 @@ export default function Infos({ setCurrentStep, setForm, Form }) {
     let error = "";
 
     switch (id) {
-      case "name":
-        isValidInput = /^[a-zA-Z]+$/.test(value);
-        error = isValidInput ? "" : `Invalid ${id}`;
+      case "Nom":
+        isValidInput = /^[a-zA-Z]+\s*[a-zA-Z]*$/.test(value);
+        error = isValidInput ? "" : `Invalide ${id}`;
         setNameError(error);
         break;
-      case "lastName":
-        isValidInput = /^[a-zA-Z]+$/.test(value);
-        error = isValidInput ? "" : `Invalid ${id}`;
+      case "Prénom":
+        isValidInput = /^[a-zA-Z]+\s*[a-zA-Z]*$/.test(value);
+        error = isValidInput ? "" : `Invalide ${id}`;
         setLastNameError(error);
         break;
       case "Email":
         isValidInput = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value);
-        error = isValidInput ? "" : `Invalid ${id}`;
+        error = isValidInput ? "" : `Invalide ${id}`;
         setEmailError(error);
         break;
-      case "telephone":
-        isValidInput = /^[0-9]{10}$/.test(value);
-        error = isValidInput ? "" : `Invalid ${id}`;
+      case "Téléphone":
+        isValidInput = /^\d+$/.test(value);
+        error = isValidInput ? "" : `Invalide ${id}`;
         setTelephoneError(error);
         break;
       default:
         break;
     }
+    setForm((prevState) => ({ ...prevState, [id]: value, }))
 
-    const inputStyle = isValidInput ? "" : { Color: "red" };
-    setForm((prevState) => ({ ...prevState, [id]: value, [`${id}Style`]: inputStyle }));
+    // Show notification for each error
+    if (error) {
+      toast.error(error);
+    }
   };
 
   const handleconfirmer = (e) => {
     if (nameError || lastNameError || emailError || telephoneError) {
       e.preventDefault();
-      alert("fix your errors");
-
-      //if there any error in inputs don't navigate to the next page
+      toast.error("Vous devez remplir tous les champs");
       return;
-    } else if (!Form.name || !Form.lastName || !Form.Email || !Form.telephone) {
+    } else if (!Form.Nom || !Form.Prénom || !Form.Email || !Form.Téléphone) {
       e.preventDefault();
-      alert("you should write you infos");
-
-      //if the inputs are empty don't go to the next page
+      toast.error("Vous devez remplir tous les champs");
       return;
     } else {
       setCurrentStep(5);
       navigate("/Confirmation");
     }
-
   };
 
   const handleGoBack = () => {
     setCurrentStep(3);
-    navigate(-1);
+    navigate("/clientSubCategory");
   };
 
-  // Save form data to local strage whenever it changes
+  // Save form data to local storage whenever it changes
   useEffect(() => {
     localStorage.setItem("Form", JSON.stringify(Form));
   }, [Form]);
@@ -87,26 +86,29 @@ export default function Infos({ setCurrentStep, setForm, Form }) {
   return (
     <div className="Cont">
       <form className="Form">
-        <h1>infos</h1>
+        
+        <h1>Informations</h1>
         <div className="inputRow">
-          <label htmlFor="name">Name</label>
-          <input type="text" id="name" onChange={handlechange} value={Form.name} style={Form.inputStyle} required />
+          <label htmlFor="name">Nom</label>
+          <input type="text" id="Nom" onChange={handlechange} value={Form.Nom} required />
         </div>
         <div className="inputRow">
-          <label htmlFor="lastName">Last_Name</label>
-          <input type="text" id="lastName" onChange={handlechange} value={Form.lastName} style={Form.inputStyle} required />
+          <label htmlFor="lastName">Prénom</label>
+          <input type="text" id="Prénom" onChange={handlechange} value={Form.Prénom} required />
         </div>
         <div className="inputRow">
           <label htmlFor="Email">Email</label>
-          <input type="email" id="Email" onChange={handlechange} value={Form.Email} style={Form.inputStyle} required />
+          <input type="email" id="Email" onChange={handlechange} value={Form.Email} required />
         </div>
         <div className="inputRow">
-          <label htmlFor="telephone">telephone </label>
-          <input type="text" id="telephone" onChange={handlechange} value={Form.telephone} style={Form.inputStyle} required />
+          <label htmlFor="telephone">Téléphone</label>
+          <input type="tel" id="Téléphone" onChange={handlechange} value={Form.Téléphone} required />
         </div>
-        <button onClick={handleconfirmer}>Confirmer</button>
-        <div className="text-center mt-3">
-          <button className="return-button" onClick={handleGoBack}>Retour</button>
+        
+        
+        <div className="button-container">
+          <button className="styled-button "onClick={handleconfirmer}>Confirmer</button> <ToastContainer  />
+          <button className="styled-button" onClick={handleGoBack}>Retour</button>
         </div>
       </form>
     </div>

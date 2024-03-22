@@ -12,6 +12,7 @@ export default function ClientSubCategory({ setCurrentStep }) {
     const navigate = useNavigate();
 
     const handleChooseSubCategory = (subcategory) => {
+        localStorage.setItem('SelectedSubCategory', JSON.stringify(subcategory));
         setCurrentStep(4);
         if (subcategory === "Start-up") {
             navigate('/startupType');
@@ -20,7 +21,6 @@ export default function ClientSubCategory({ setCurrentStep }) {
         } else if (subcategory === "Questions/réponses") {
             navigate('/questionForm')
         } else {
-            localStorage.setItem('SelectedSubCategory', JSON.stringify(subcategory));
             navigate('/Infos');
         }
         console.log(subcategory);
