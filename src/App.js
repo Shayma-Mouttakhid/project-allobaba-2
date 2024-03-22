@@ -1,7 +1,6 @@
 import './App.css';
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import Service from './components/services/Services';
 import Infos from './components/infosform/Infosform';
 import Progressbar from './components/ProgressBar/Progressbar';
@@ -13,6 +12,7 @@ import Sectors from './components/Sectors/Sectors';
 import QuestionForm from './components/QuestionForm/QuestionForm';
 import Confirmation from './components/Confirmation/Confirmation';
 import Preloader from './components/Preloader/Preloader';
+import ConfirmationQF from './components/ConfirmationQF/ConfirmationQF';
 
 function App() {
   const Client = [
@@ -38,10 +38,11 @@ function App() {
             <Route path="/clientCategory" element={<ClientCategory setCurrentStep={setCurrentStep}  />} />
             <Route path="/clientSubCategory" element={<ClientSubCategory setCurrentStep={setCurrentStep}  />} />
             <Route path="/startupType" element={<StartupType setCurrentStep={setCurrentStep}/>} />
-            <Route path="/sectors" element={<Sectors  setCurrentStep={setCurrentStep}  />} />
+            <Route path="/sectors" element={<Sectors  setCurrentStep={setCurrentStep} Client={Client} />} />
             <Route path="questionForm" element={<QuestionForm />} />
             <Route path="/Confirmation" element={<Confirmation setCurrentStep={setCurrentStep} Form={Form}  Service={service} />} />
             <Route path="/Infos" element={<Infos Form={Form} setCurrentStep={setCurrentStep} setForm={setForm} />} />
+            <Route path="/confirmationQF" element={<ConfirmationQF setCurrentStep={setCurrentStep}/>} />
           </Routes>
         </Router>
       </div>

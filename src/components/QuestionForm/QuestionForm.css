@@ -8,6 +8,9 @@
   h1{
     color: #ef4d48;
   }
+  .headerQF{
+    font-size: xx-large;
+  }
   .card {
     margin: 10px;
     border-radius:10% ;
