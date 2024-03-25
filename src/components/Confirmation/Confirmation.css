@@ -1,23 +1,21 @@
 
 .table-container{
-  
-  height: 80%;
-  max-height: 70%;
-
+ margin-top: 10px;
 }
 .styled-table {
   border-collapse: collapse;
-  width: 80%;
-  max-width: 60%;
+  width: 90%;
+  max-width: 75%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   margin: auto; 
+  
 }
 
 .styled-table th,
 .styled-table td {
   border: 1px solid #ddd;
-  padding: 5px;
+  padding: 10px;
   text-align: left;
 }
 
@@ -49,7 +47,7 @@
 @media screen and (max-width: 768px) {
   .styled-table {
     font-size: 14px;
-    height: 60%;
+    height: 100%;
   }
 
   .styled-button {
