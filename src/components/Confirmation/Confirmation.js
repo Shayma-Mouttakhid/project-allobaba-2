@@ -7,9 +7,12 @@ import "./Confirmation.css";
 
 export default function Confirmation({
   setCurrentStep,
+  setComplete,
+  setForm
 }) {
   const notify = () => toast("Vos informations ont été envoyées !");
-  setCurrentStep(5) 
+  const notifyerror=()=>toast("Vos informations ont pas envoyées !")
+  setCurrentStep(5)
 
   const formData = JSON.parse(localStorage.getItem("Form"));
   const service = localStorage.getItem("selectedService");
@@ -19,18 +22,18 @@ export default function Confirmation({
   const selectedSubCategory = localStorage.getItem("SelectedSubCategory");
   const handleSave = (notify) => {
 
-    setCurrentStep(6)
+    
     //the Email details 
-    const Serviceid = "service_w0m2tmi";
-    const Templateid = "template_6lcayu7";
-    const publicKey = "AL-p2PQ2haf2rWheB";
+    const Serviceid = "service_tv8jfdr";
+    const Templateid = "template_7ix9c1b";
+    const publicKey = "demKCJhSs9qaBrKeJ";
     // create a new object that contains the dynamic  template params 
     const tamplateparams = {
       from_name: Nom,
       from_lastname: Prénom,
       from_tele: Téléphone,
       from_Email: Email,
-      from_servie: service,
+      from_service: service,
       from_category: selectedCategory,
       from_SousCategorie: selectedSubCategory, // Corrected key
       from_secteur: secteur,
@@ -38,21 +41,24 @@ export default function Confirmation({
     }
 
 
-    //send this infos to the email 
+    // send this infos to the email 
     emailjs.send(Serviceid, Templateid, tamplateparams, publicKey).then((res) => {
       console.log("email sent successfully ", res);
       notify()
-
+      setComplete(true);
     }).catch((error) => {
       console.log("error sending email: ", error);
+      notifyerror()
     })
+    
+
   };
 
   const navigate = useNavigate();
 
   const handleBack = () => {
-    
-    navigate("/Infos"); // navigate -1 to return to the previous page
+    setComplete(false);
+    navigate("/Infos"); 
   };
 
   return (
@@ -87,19 +93,21 @@ export default function Confirmation({
             <th>Votre Sous Catégorie</th>
             <td>{selectedSubCategory}</td>
           </tr>
-          <tr>
-            <th> Votre Secteur</th>
-            <td>{secteur}</td>
-          </tr>
+          {secteur !== "" && (
+            <tr>
+              <th> Votre Secteur</th>
+              <td>{secteur}</td>
+            </tr>
+          )}
         </table>
       </div>
       <div className="button-container">
         <button className="styled-button" onClick={() => handleSave(notify)}>
-         Envoyer
+          Envoyer
         </button>
-        <ToastContainer/>
+        <ToastContainer />
         <button className="styled-button" onClick={handleBack}>
-         Retour
+          Retour
         </button>
       </div>
     </>

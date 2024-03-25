@@ -15,10 +15,9 @@ export default function Services({ setCurrentStep, setService }) {
     { id: 6, name: "Formation/Coaching", img: "/images/coaching.jpg" }
   ];
 
-  useEffect(() => {
-    setCurrentStep(1);
-  });
 
+  setCurrentStep(1);
+  
   const navigate = useNavigate();
   const handleSave = (name) => {
     setCurrentStep(2);

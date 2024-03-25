@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
-export default function Sectors({ setCurrentStep }) {
+export default function Sectors({ setCurrentStep, Client }) {
     setCurrentStep(3);
     const navigate = useNavigate();
-    const storedClient = JSON.parse(localStorage.getItem('Client'));
+    const storedClient = Client;
     const selectedSubCategory = JSON.parse(localStorage.getItem('SelectedSubCategory'));
-    console.log(selectedSubCategory);
 
     const [selectedSector, setSelectedSector] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -33,7 +32,7 @@ export default function Sectors({ setCurrentStep }) {
         setSelectedSector(value);
         setAutreValue(value);
     };
-    
+
     const handleNext = () => { // Pass to the other page
         if (selectedSector) {
             localStorage.setItem('SelectedSector', selectedSector); // Local storage of the selected sector value
@@ -42,7 +41,7 @@ export default function Sectors({ setCurrentStep }) {
             setErrorMessage('Veuillez choisir un secteur d\'activités avant de continuer.');
         }
     };
-    
+
 
     const handleGoBack = () => { // Return to the previous page
         setCurrentStep(3);
@@ -52,21 +51,27 @@ export default function Sectors({ setCurrentStep }) {
     return (
         <div className="container text-center">
             <h1>Quel est votre secteur d'activités?</h1>
-            {storedClient && storedClient.map(client => (
-                client.subcategory.map(subcategory => (
-                    subcategory.title === selectedSubCategory && (
-                        <div key={subcategory.title}>
-                            <Form.Select value={selectedSector} onChange={handleSectorChange}>
-                                <option value="">Sélectionner un secteur</option>
-                                {subcategory.secteurs.map((sector, i) => (
+            {storedClient && storedClient.map(client => {
+    return (
+        client.subcategory && client.subcategory.map(subcategory => {
+            return (
+                subcategory.title === selectedSubCategory && (
+                    <div key={subcategory.title}>
+                        <Form.Select value={selectedSector} onChange={handleSectorChange}>
+                            <option value="">Sélectionner un secteur</option>
+                            {subcategory.secteurs && subcategory.secteurs.map((sector, i) => {
+                                return (
                                     <option key={i} value={sector}>{sector}</option>
-                                ))}
-                                <option value="autre">Autre</option>
-                            </Form.Select>
-                        </div>
-                    )
-                ))
-            ))}
+                                );
+                            })}
+                            <option value="autre">Autre</option>
+                        </Form.Select>
+                    </div>
+                )
+            );
+        })
+    );
+})}
             {autreActive && (
                 <Form.Control
                     type="text"
@@ -81,7 +86,6 @@ export default function Sectors({ setCurrentStep }) {
                     {errorMessage}
                 </div>
             )}
-             {console.log(selectedSector)}
             <div className="text-center mt-3">
                 <Button className="return-button bg-secondary m-2" onClick={handleGoBack}>Retour</Button>
                 <Button className="next-button m-2" onClick={handleNext}>Suivant</Button>

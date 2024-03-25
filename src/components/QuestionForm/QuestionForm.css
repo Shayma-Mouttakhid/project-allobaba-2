@@ -5,8 +5,12 @@
   
   }
   
-  h1{
-    color: #ef4d48;
+  
+  .headerQF{
+    color: #000;
+    padding-top: 20px;
+  padding-bottom: 10px;
+    font-size: 40px;
   }
   .card {
     margin: 10px;

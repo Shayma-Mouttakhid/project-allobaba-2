@@ -52,10 +52,6 @@ export default function Infos({ setCurrentStep, setForm, Form }) {
     }
     setForm((prevState) => ({ ...prevState, [id]: value, }))
 
-    // Show notification for each error
-    if (error) {
-      toast.error(error);
-    }
   };
 
   const handleconfirmer = (e) => {
@@ -84,33 +80,46 @@ export default function Infos({ setCurrentStep, setForm, Form }) {
   }, [Form]);
 
   return (
-    <div className="Cont">
-      <form className="Form">
-        
-        <h1>Informations</h1>
-        <div className="inputRow">
-          <label htmlFor="name">Nom</label>
-          <input type="text" id="Nom" onChange={handlechange} value={Form.Nom} required />
+    <div className="container-fluid">
+      <div className="container-fluid  rounded d-flex justify-content-center align-items-center">
+        <div className="col-sm-10 col-md-6 col-lg-4">
+          <h1 className='headerQF text-center mb-4'>Informations</h1>
+          <form className="border p-4 rounded border-secondary">
+            <div className="form-group mb-3">
+              <label htmlFor="name">Nom</label>
+              <input type="text" id="Nom" className={`form-control ${nameError && 'is-invalid'}` }onChange={handlechange} value={Form.Nom} required />
+              {nameError && <div className="invalid-feedback">{nameError}</div>}
+            </div>
+            <div className="form-group mb-3">
+              <label htmlFor="lastName">Prénom</label>
+              <input type="text" id="Prénom"  className={`form-control ${lastNameError && 'is-invalid'}` } onChange={handlechange} value={Form.Prénom} required />
+              {lastNameError && <div className="invalid-feedback">{lastNameError}</div>}
+
+            </div>
+            <div className="form-group mb-3">
+              <label htmlFor="Email">Email</label>
+              <input type="email" id="Email"  className={`form-control ${emailError && 'is-invalid'}` }onChange={handlechange} value={Form.Email} required />
+              {emailError && <div className="invalid-feedback">{emailError}</div>}
+
+            </div>
+            <div className="inputRow">
+              <label htmlFor="telephone">Téléphone</label>
+              <input type="tel" id="Téléphone"  className={`form-control ${telephoneError && 'is-invalid'}` }onChange={handlechange} value={Form.Téléphone} required />
+              {telephoneError && <div className="invalid-feedback">{telephoneError}</div>}
+
+            </div>
+
+
+            <div className="button-container">
+              <button className="styled-button" onClick={handleGoBack}>Retour</button>
+              <button className="styled-button " onClick={handleconfirmer}>Confirmer</button> <ToastContainer />
+
+            </div>
+          </form>
         </div>
-        <div className="inputRow">
-          <label htmlFor="lastName">Prénom</label>
-          <input type="text" id="Prénom" onChange={handlechange} value={Form.Prénom} required />
-        </div>
-        <div className="inputRow">
-          <label htmlFor="Email">Email</label>
-          <input type="email" id="Email" onChange={handlechange} value={Form.Email} required />
-        </div>
-        <div className="inputRow">
-          <label htmlFor="telephone">Téléphone</label>
-          <input type="tel" id="Téléphone" onChange={handlechange} value={Form.Téléphone} required />
-        </div>
-        
-        
-        <div className="button-container">
-          <button className="styled-button "onClick={handleconfirmer}>Confirmer</button> <ToastContainer  />
-          <button className="styled-button" onClick={handleGoBack}>Retour</button>
-        </div>
-      </form>
+      </div>
+      
+
     </div>
   );
 }

@@ -33,7 +33,7 @@ export default function StartupType({ setCurrentStep }) {
     
 
     const handleNext = () => {
-        if (selectedStartup && selectedStartup != 'Autre') {
+        if (selectedStartup && selectedStartup !== 'Autre') {
             localStorage.setItem('SelectedStartup', selectedStartup);
             console.log(selectedStartup); // Log the selected startup type for verification
             navigate('/Infos');

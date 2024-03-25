@@ -1,14 +1,19 @@
 import React from "react";
 // import { Link } from "react-router-dom";
+import { TiTick } from "react-icons/ti";
 import "./Progressbar.css";
 
-const Progressbar = ({ currentStep, setCurrentStep }) => {
+const Progressbar = ({ currentStep, setCurrentStep, complete }) => {
   const steps = [
-    { id: 1, step: "Service", path: "/" },
-    { id: 2, step: "Catégorie", path: "/clientCategory" },
-    { id: 3, step: "Sous Catégorie", path: "/clientSubCategory" },
-    { id: 4, step: "Infos Personnels", path: "/Infos" },
-    { id: 5, step: "Confirmation", path: "/Confirmation" },
+    // { step: "Service" },
+    // { step: "Catégorie" },
+    // { step: "Sous Catégorie" },
+    // { step: "Formulaire" },
+    // { step: "Confirmation" },
+    1,
+    2,
+    3,
+    4, 5
   ];
 
   // const handleStepClick = (stepId) => {
@@ -19,19 +24,16 @@ const Progressbar = ({ currentStep, setCurrentStep }) => {
     <div className="container">
       <div className="row justify-content-center">
         {steps?.map((step) => (
-          <div
-            key={step.id}
-            className={`step-item position-relative d-flex flex-column justify-content-center align-items-center col-md-auto ${
-              currentStep === step.id && "active"
-            } ${(currentStep>step.id) && "complete"} ${(currentStep===6) && "complete"} `
-              }
-            // onClick={() => handleStepClick(step.id)}
+          <div key={step}
+            //  key={i} 
+            className={`step-item  ${currentStep === step && "active"} ${(step < currentStep || complete) && "complete"
+              } `}
           >
-            <div className="step">{step.id}</div>
-            <p>{step.step}</p>
+            <div className="step"> {step < currentStep || complete ? <TiTick size={30} /> : step}
+            </div>
+            {/* <p>{step.step}</p> */}
           </div>
-        ))}
-      </div>
+        ))}</div>
     </div>
   );
 };
