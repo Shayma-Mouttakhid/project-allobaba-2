@@ -10,16 +10,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 10rem;
+    width: 9rem;
     margin-bottom: 5px; 
-    
     font-family:Arial;
    
 }
 
 .step {
     width: 50px;
-    margin-top: 10px;
     height: 50px;
     display: flex;
     align-items: center;
@@ -44,7 +42,7 @@
     position: absolute;
     height: 15px;
     right: 50%;
-    top: 55%; 
+    top: 29%; 
     transform: translateY(-50%);
 }
 
@@ -72,12 +70,12 @@
     border: none;
 }
 
- /* p {
+ p {
     margin: 5px 10px 10px 10px;
     text-align: center;
     height: 50px;
     display: flex;
-} */
+}
 
 @media (max-width: 768px) {
     .step-item {

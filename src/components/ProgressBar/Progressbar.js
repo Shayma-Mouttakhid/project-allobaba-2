@@ -5,15 +5,11 @@ import "./Progressbar.css";
 
 const Progressbar = ({ currentStep, setCurrentStep, complete }) => {
   const steps = [
-    // { step: "Service" },
-    // { step: "Catégorie" },
-    // { step: "Sous Catégorie" },
-    // { step: "Formulaire" },
-    // { step: "Confirmation" },
-    1,
-    2,
-    3,
-    4, 5
+    { step: "Service" },
+    { step: "Catégorie" },
+    { step: "Segments" },
+    { step: "Formulaire" },
+    { step: "Confirmation" },
   ];
 
   // const handleStepClick = (stepId) => {
@@ -23,15 +19,15 @@ const Progressbar = ({ currentStep, setCurrentStep, complete }) => {
   return (
     <div className="container">
       <div className="row justify-content-center">
-        {steps?.map((step) => (
-          <div key={step}
-            //  key={i} 
-            className={`step-item  ${currentStep === step && "active"} ${(step < currentStep || complete) && "complete"
+        {steps?.map((step, i) => (
+          <div
+            key={i}
+            className={`step-item  ${currentStep === i + 1 && "active"} ${(i + 1 < currentStep || complete) && "complete"
               } `}
           >
-            <div className="step"> {step < currentStep || complete ? <TiTick size={30} /> : step}
+            <div className="step"> {i + 1 < currentStep || complete ? <TiTick size={24} /> : i + 1}
             </div>
-            {/* <p>{step.step}</p> */}
+            <p>{step.step}</p>
           </div>
         ))}</div>
     </div>

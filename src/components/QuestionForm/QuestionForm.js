@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import 'react-international-phone/style.css';
+import { PhoneInput } from 'react-international-phone';
 import "./QuestionForm.css";
 //  import "../Style/style.css";
 // import "./QuestionForm.css";
 
-function QuestionForm( {setCurrentStep}) {
+function QuestionForm({ setCurrentStep }) {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     nomComplet: '',
@@ -14,8 +16,8 @@ function QuestionForm( {setCurrentStep}) {
   setCurrentStep(4);
   const [formErrors, setFormErrors] = useState({});
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
+  const handleInputChange = (value, name) => {
+    
     setFormData({
       ...formData,
       [name]: value
@@ -26,18 +28,18 @@ function QuestionForm( {setCurrentStep}) {
       [name]: ''
     });
   };
-  const handleBack=()=>{
+  const handleBack = () => {
     setCurrentStep(3);
     navigate("/clientSubCategory");
   }
-  const handleSubmit = (event) => {
-    
+  const handleSubmit = () => {
+
     // Validate inputs
     const errors = {};
     if (!/^[a-zA-Z]+ [a-zA-Z]+$/.test(formData.nomComplet)) {
       errors.nomComplet = 'Nom complet doit contenir uniquement des lettres.';
     }
-    if (!/^\d+$/.test(formData.numeroTelephone)) {
+    if (/^\+\d{1,3}\d{9}$/.test(formData.numeroTelephone)) {
       errors.numeroTelephone = 'Numéro de téléphone ne doit contenir que des chiffres.';
     }
     if (!/\S/.test(formData.votreMessage)) {
@@ -73,19 +75,19 @@ function QuestionForm( {setCurrentStep}) {
                 id="nomComplet"
                 name="nomComplet"
                 value={formData.nomComplet}
-                onChange={handleInputChange}
-              />
+                onChange={(e) => handleInputChange(e.target.value, "nomComplet")}              />
               {formErrors.nomComplet && <div className="invalid-feedback">{formErrors.nomComplet}</div>}
             </div>
             <div className="form-group mb-3">
               <label htmlFor="numeroTelephone">Numéro de téléphone</label>
-              <input
-                type="text"
+              <PhoneInput
+                defaultCountry="US"
+                type="tel"
+                id="Téléphone"
                 className={`form-control ${formErrors.numeroTelephone && 'is-invalid'}`}
-                id="numeroTelephone"
-                name="numeroTelephone"
                 value={formData.numeroTelephone}
-                onChange={handleInputChange}
+                onChange={(value) => handleInputChange(value, "numeroTelephone")}
+                rules={{ required: true }}
               />
               {formErrors.numeroTelephone && <div className="invalid-feedback">{formErrors.numeroTelephone}</div>}
             </div>
@@ -98,13 +100,13 @@ function QuestionForm( {setCurrentStep}) {
                 rows="1"
                 style={{ minHeight: '38px' }}
                 value={formData.votreMessage}
-                onChange={handleInputChange}
-              ></textarea>
+                onChange={(e) => handleInputChange(e.target.value, "votreMessage")}
+                ></textarea>
 
               {formErrors.votreMessage && <div className="invalid-feedback">{formErrors.votreMessage}</div>}
             </div>
             <div className="text-center m-2">
-              <button  onClick={handleBack}className="btn btn-secondary m-2">Retour</button>
+              <button onClick={handleBack} className="btn btn-secondary m-2">Retour</button>
               <button type="submit" className="btn btn-primary m-2">Suivant</button>
             </div>
           </form>
