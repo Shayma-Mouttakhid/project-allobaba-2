@@ -12,7 +12,7 @@ export default function ClientSubCategory({ setCurrentStep }) {
     const navigate = useNavigate();
 
     const handleChooseSubCategory = (subcategory) => {
-        localStorage.setItem('SelectedSubCategory', JSON.stringify(subcategory));
+        localStorage.setItem("SelectedSubCategory", subcategory);
         setCurrentStep(4);
         if (subcategory === "Start-up") {
             navigate('/startupType');
@@ -23,7 +23,6 @@ export default function ClientSubCategory({ setCurrentStep }) {
         } else {
             navigate('/Infos');
         }
-        console.log(subcategory);
     };
     const handleGoBack = () => {
         setCurrentStep(2);

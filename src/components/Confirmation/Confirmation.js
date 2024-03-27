@@ -16,10 +16,13 @@ export default function Confirmation({
 
   const formData = JSON.parse(localStorage.getItem("Form"));
   const service = localStorage.getItem("selectedService");
+  const startup = localStorage.getItem("SelectedStartup");
+  console.log(startup);
   const secteur = localStorage.getItem("SelectedSector");
   const { Nom, Prénom, Email, Téléphone } = formData;
   const selectedCategory = localStorage.getItem("selectedCategory");
   const selectedSubCategory = localStorage.getItem("SelectedSubCategory");
+  console.log(selectedSubCategory);
   const handleSave = (notify) => {
 
     
@@ -93,7 +96,13 @@ export default function Confirmation({
             <th>Votre Sous Catégorie</th>
             <td>{selectedSubCategory}</td>
           </tr>
-          {secteur !== "" && (
+          {selectedSubCategory==="Start-up" && (
+            <tr>
+              <th> Type de Start-up</th>
+              <td>{startup}</td>
+            </tr>
+          )}
+          {selectedCategory==="Particulier" && (
             <tr>
               <th> Votre Secteur</th>
               <td>{secteur}</td>
