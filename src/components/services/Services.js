@@ -29,17 +29,17 @@ export default function Services({ setCurrentStep, setService }) {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 1000,
-    slidesToShow: 4,
+    speed: 2000,
+    slidesToShow: 3.5,
     slidesToScroll: 0,
     centerMode: true,
     focusOnSelect: true,
     autoplay: true, // Autoplay slides
-    autoplaySpeed: 1500, // Delay between slides in milliseconds
+    autoplaySpeed: 2000, // Delay between slides in milliseconds
     arrows: false, // Show navigation arrows
     responsive: [
       {
-        breakpoint: 768,
+        breakpoint: 780,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 0,

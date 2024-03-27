@@ -39,7 +39,7 @@ function QuestionForm({ setCurrentStep }) {
     if (!/^[a-zA-Z]+ [a-zA-Z]+$/.test(formData.nomComplet)) {
       errors.nomComplet = 'Nom complet doit contenir uniquement des lettres.';
     }
-    if (/^\+\d{1,3}\d{9}$/.test(formData.numeroTelephone)) {
+    if (!/^\+\d{1,3}\d{9}$/.test(formData.numeroTelephone)) {
       errors.numeroTelephone = 'Numéro de téléphone ne doit contenir que des chiffres.';
     }
     if (!/\S/.test(formData.votreMessage)) {

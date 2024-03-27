@@ -37,7 +37,7 @@ export default function ClientSubCategory({ setCurrentStep }) {
         centerMode: true,
         focusOnSelect: true,
         autoplay: true, // Autoplay slides
-        autoplaySpeed: 1500,
+        autoplaySpeed: 2500,
         arrows: false,
     };
 

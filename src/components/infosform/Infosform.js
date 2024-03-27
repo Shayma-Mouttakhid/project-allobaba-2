@@ -85,24 +85,24 @@ export default function Infos({ setCurrentStep, setForm, Form }) {
       <div className="col-sm-10 col-md-6 col-lg-4">
         <h1 className='headerQF text-center mb-4'>Informations</h1>
         <form className="border p-4 rounded border-secondary">
-          <div className="form-group mb-3">
+          <div className="form-group mb-1">
             <label htmlFor="name">Nom</label>
             <input type="text" id="Nom" className={`form-control ${nameError && 'is-invalid'}`} onChange={(e) => handlechange("Nom", e.target.value)} value={Form.Nom} required />
             {nameError && <div className="invalid-feedback">{nameError}</div>}
           </div>
-          <div className="form-group mb-3">
+          <div className="form-group mb-1">
             <label htmlFor="lastName">Prénom</label>
             <input type="text" id="Prénom" className={`form-control ${lastNameError && 'is-invalid'}`} onChange={(e) => handlechange("Prénom", e.target.value)} value={Form.Prénom} required />
             {lastNameError && <div className="invalid-feedback">{lastNameError}</div>}
 
           </div>
-          <div className="form-group mb-3">
+          <div className="form-group mb-1">
             <label htmlFor="Email">Email</label>
             <input type="email" id="Email" className={`form-control ${emailError && 'is-invalid'}`} onChange={(e) => handlechange("Email", e.target.value)} value={Form.Email} required />
             {emailError && <div className="invalid-feedback">{emailError}</div>}
 
           </div>
-          <div className="form-group mb-3">
+          <div className="form-group mb-1">
             <label htmlFor="telephone">Téléphone :</label>
             {/* <PhoneInput
       placeholder="Enter phone number"
