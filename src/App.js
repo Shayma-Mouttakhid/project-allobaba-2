@@ -12,7 +12,7 @@ import StartupType from './components/StartupType/StartupType';
 import Sectors from './components/Sectors/Sectors';
 import QuestionForm from './components/QuestionForm/QuestionForm';
 import Confirmation from './components/Confirmation/Confirmation';
-import Preloader from './components/Preloader/Preloader';
+// import Preloader from './components/Preloader/Preloader';
 import ConfirmationQF from './components/ConfirmationQF/ConfirmationQF';
 function App() {
   const Client = [
@@ -30,7 +30,7 @@ function App() {
   return (
     <>
 
-      <Preloader />
+      {/* <Preloader /> */}
       <div className="App">
         <Progressbar setCurrentStep={setCurrentStep} currentStep={currentStep}complete={complete} />
         <Router>
