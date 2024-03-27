@@ -18,7 +18,7 @@ export default function Infos({ setCurrentStep, setForm, Form }) {
     if (storedForm) {
       setForm(JSON.parse(storedForm));
     }
-  }, []);
+  },[]);
 
   const handlechange = (e) => {
     const { id, value } = e.target;
@@ -43,8 +43,8 @@ export default function Infos({ setCurrentStep, setForm, Form }) {
         setEmailError(error);
         break;
       case "Téléphone":
-        isValidInput = /^\d+$/.test(value);
-        error = isValidInput ? "" : `Invalide ${id}`;
+        isValidInput = /^\+\d{1,3}\s?\d{5,14}$/.test(value);
+        error = isValidInput ? "" : `Le numéro de téléphone doit commencer par le code du pays (ex: +1) suivi du reste du numéro.`;
         setTelephoneError(error);
         break;
       default:

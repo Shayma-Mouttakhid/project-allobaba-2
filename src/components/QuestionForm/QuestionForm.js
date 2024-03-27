@@ -31,15 +31,23 @@ function QuestionForm( {setCurrentStep}) {
     navigate("/clientSubCategory");
   }
   const handleSubmit = (event) => {
-    
+    event.preventDefault();
     // Validate inputs
     const errors = {};
-    if (!/^[a-zA-Z]+ [a-zA-Z]+$/.test(formData.nomComplet)) {
-      errors.nomComplet = 'Nom complet doit contenir uniquement des lettres.';
+    if (!/^[a-zA-Z\s-]+$/.test(formData.nomComplet.trim())) {
+      errors.nomComplet = 'Le nom complet doit contenir uniquement des lettres, des espaces ou des tirets.';
+    } else if (!/\s/.test(formData.nomComplet.trim())) {
+      errors.nomComplet = 'Le nom complet doit inclure à la fois le nom et le prénom.';
     }
-    if (!/^\d+$/.test(formData.numeroTelephone)) {
-      errors.numeroTelephone = 'Numéro de téléphone ne doit contenir que des chiffres.';
-    }
+    
+    if (!formData.numeroTelephone.trim()) {
+      errors.numeroTelephone = 'Le numéro de téléphone est obligatoire!';
+    } else if (!/^\+\d{1,3}\s?\d{5,14}$/.test(formData.numeroTelephone.trim())) {
+          errors.numeroTelephone = 'Le numéro de téléphone doit commencer par le code du pays (ex: +1) suivi du reste du numéro.';
+      } 
+    
+    
+    
     if (!/\S/.test(formData.votreMessage)) {
       errors.votreMessage = 'Veuillez entrer un message.';
     }
@@ -54,7 +62,6 @@ function QuestionForm( {setCurrentStep}) {
         numeroTelephone: '',
         votreMessage: ''
       });
-      console.log(formData);
       navigate('/ConfirmationQF');
     }
   };

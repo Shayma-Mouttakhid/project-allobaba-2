@@ -6,7 +6,7 @@ export default function Sectors({ setCurrentStep, Client }) {
     setCurrentStep(3);
     const navigate = useNavigate();
     const storedClient = Client;
-    const selectedSubCategory = JSON.parse(localStorage.getItem('SelectedSubCategory'));
+    const selectedSubCategory = localStorage.getItem('SelectedSubCategory');
 
     const [selectedSector, setSelectedSector] = useState('');
     const [errorMessage, setErrorMessage] = useState('');

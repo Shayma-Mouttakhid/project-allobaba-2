@@ -7,12 +7,12 @@ import { useNavigate } from "react-router-dom";
 
 export default function Services({ setCurrentStep, setService }) {
   const Services = [
-    { id: 1, name: "Marketing Digitale", img: "/images/marketing.jpg" },
-    { id: 2, name: "Développement web/mobile", img: "/images/web.jpg" },
-    { id: 3, name: "Audio-visuel", img: "/images/audiov.jpg" },
-    { id: 4, name: "Design/Infographie", img: "/images/design.jpg" },
-    { id: 5, name: "Montage des vidéos", img: "/images/montage.jpg" },
-    { id: 6, name: "Formation/Coaching", img: "/images/coaching.jpg" }
+    { id: 1, name: "Marketing Digitale", img: "https://media.istockphoto.com/id/1452731336/fr/photo/m%C3%A9gaphone-de-couleur-bleue-se-d%C3%A9marquant-de-la-foule.webp?b=1&s=170667a&w=0&k=20&c=rEWLZIr7V6-qatE0RaQdfR7_4hE3lQt8F4ugn0eKhxE=" },
+    { id: 2, name: "Développement web/mobile", img: "https://images.pexels.com/photos/34600/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600" },
+    { id: 3, name: "Audio-visuel", img: "https://media.istockphoto.com/id/1413985906/fr/photo/audio-vid%C3%A9o-t%C3%A9l%C3%A9-timeline-avec-boutons-indicateurs-basculer-les-commutateurs-en-gros-plan.webp?b=1&s=170667a&w=0&k=20&c=qwDlmgzsaQKs2RkWhEbf3aQt6pT2XAaP_0QqhN1eoK0=" },
+    { id: 4, name: "Design/Infographie", img: "https://media.istockphoto.com/id/1483745473/fr/photo/le-graphiste-travaille-sur-un-ordinateur-portable-avec-un-stylo-num%C3%A9rique-scruter.webp?b=1&s=170667a&w=0&k=20&c=B54QtisN4d73Wca1VHQ8QUErUSGii-0tVNrP1OUC3VA=" },
+    { id: 5, name: "Montage des vidéos", img: "https://images.pexels.com/photos/5628244/pexels-photo-5628244.jpeg?auto=compress&cs=tinysrgb&w=600" },
+    { id: 6, name: "Formation/Coaching", img: "https://media.istockphoto.com/id/1093925980/fr/photo/groupe-heureux-des-personnes-qui-apprennent-le-g%C3%A9nie-logiciel-et-affaires-au-cours-de-la.webp?b=1&s=170667a&w=0&k=20&c=ao1F_74f1S04RPOWGLN1SmIVvCYrvIfXQptE7Nz2wJg=" }
   ];
 
 
@@ -62,7 +62,7 @@ export default function Services({ setCurrentStep, setService }) {
               <div className="card-overlay">
                 <h2 className="card-title" >{service.name}</h2>
                 <button onClick={() => handleSave(service.name)} className="btn">
-                  Save
+                  Choisir
                 </button>
               </div>
             </div>
