@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-international-phone/style.css';
@@ -19,7 +19,7 @@ export default function Infos({ setCurrentStep, setForm, Form }) {
     if (storedForm) {
       setForm(JSON.parse(storedForm));
     }
-  }, []);
+  });
 
   const handlechange = (id, value) => {
     let isValidInput = true;
