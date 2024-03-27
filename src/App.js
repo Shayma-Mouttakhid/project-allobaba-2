@@ -6,7 +6,7 @@ import Service from './components/services/Services';
 import Infos from './components/infosform/Infosform';
 import Progressbar from './components/ProgressBar/Progressbar';
 import ClientCategory from './components/ClientCategory/ClientCategory';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {  HashRouter as Router,  Routes, Route } from 'react-router-dom';
 import ClientSubCategory from './components/ClientSubCategory/ClientSubCategory';
 import StartupType from './components/StartupType/StartupType';
 import Sectors from './components/Sectors/Sectors';
@@ -16,9 +16,9 @@ import Confirmation from './components/Confirmation/Confirmation';
 import ConfirmationQF from './components/ConfirmationQF/ConfirmationQF';
 function App() {
   const Client = [
-    { "category": "Particulier", "subcategory": [{ "title": "Auto-entrepreneur", "img": "/images/Auto-entrepreneur.png", "secteurs": ["Services de conseil en marketing", "Services de design graphique", "Services de photographie", "Services de développement web", "Services de formation", "Services de coaching", "Services de jardinage", "Services de réparation et de maintenance"] }, { "title": "Profession libérale", "img": "/images/PL.png", "secteurs": ["Services informatiques", "Services techniques", "Services éducatifs", "Services artistiques", "Services de santé mentale", "Services médicaux et paramédicaux", "Services de conseil", "Services comptables et fiscaux", "Services juridiques"] }, { "title": "Offline Busines", "img": "/images/Offline-business.png", "secteurs": ["Restauration", "Bâtiment", "Transport", "Santé", "Éducation", "Tourisme", "Beauté", "Artisanat", "Sécurité", "Recyclage"] }], "img": "/images/Particulier1.jpg" },
-    { "category": "Entreprise", "subcategory": [{ "title": "Start-up", "type": ["Startups sociales", "E-Commerce", "Technologie Financière", "Technologie de la santé", "SaaS", "Biotechnologie", "Education"], "img": "/images/startup.png" }, { "title": "TPE-PME", "img": "/images/tpe-pme.png" }, { "title": "Grande Entreprise/Multi-nationale", "img": "/images/ge2.png" }], "img": "/images/Entreprise.jpg" },
-    { "category": "Association/NGO", "subcategory": [{ "title": "Prestation", "img": "/images/prestation.png" }, { "title": "Questions/réponses", "img": "/images/qr.png" }], "img": "/images/association.jpg" }
+    { "category": "Particulier", "subcategory": [{ "title": "Auto-entrepreneur", "img": "https://media.istockphoto.com/id/1130480436/fr/photo/jeune-homme-parlant-au-t%C3%A9l%C3%A9phone-dans-son-bureau-%C3%A0-la-maison.jpg?b=1&s=612x612&w=0&k=20&c=Fz9gQQbfEQx-6yglZwvUW_kOr4gl2pJvslDmGYvkD9c=", "secteurs": ["Services de conseil en marketing", "Services de design graphique", "Services de photographie", "Services de développement web", "Services de formation", "Services de coaching", "Services de jardinage", "Services de réparation et de maintenance"] }, { "title": "Profession libérale", "img": "https://images.pexels.com/photos/6205607/pexels-photo-6205607.jpeg?auto=compress&cs=tinysrgb&w=600", "secteurs": ["Services informatiques", "Services techniques", "Services éducatifs", "Services artistiques", "Services de santé mentale", "Services médicaux et paramédicaux", "Services de conseil", "Services comptables et fiscaux", "Services juridiques"] }, { "title": "Offline Busines", "img": "https://images.pexels.com/photos/2159065/pexels-photo-2159065.jpeg?auto=compress&cs=tinysrgb&w=600", "secteurs": ["Restauration", "Bâtiment", "Transport", "Santé", "Éducation", "Tourisme", "Beauté", "Artisanat", "Sécurité", "Recyclage"] }], "img": "https://images.pexels.com/photos/3771089/pexels-photo-3771089.jpeg?auto=compress&cs=tinysrgb&w=600" },
+    { "category": "Entreprise", "subcategory": [{ "title": "Start-up", "type": ["Startups sociales", "E-Commerce", "Technologie Financière", "Technologie de la santé", "SaaS", "Biotechnologie", "Education"], "img": "https://images.pexels.com/photos/3277808/pexels-photo-3277808.jpeg?auto=compress&cs=tinysrgb&w=600" }, { "title": "TPE-PME", "img": "/images/tpe-pme.png" }, { "title": "Grande Entreprise/Multi-nationale", "img": "https://media.istockphoto.com/id/178447404/fr/photo/b%C3%A2timents-daffaires-moderne.jpg?b=1&s=612x612&w=0&k=20&c=e4slfHvdNeGj7I5RRuXpt6Xyhe4RGr-nYzPF3KCS1Xc=" }], "img": "https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=600" },
+    { "category": "Association/NGO", "subcategory": [{ "title": "Prestation", "img": "https://media.istockphoto.com/id/1339357905/fr/photo/l%C3%A9quipe-daffaires-c%C3%A9l%C3%A8bre-le-succ%C3%A8s-avec-un-high-five.webp?b=1&s=170667a&w=0&k=20&c=X2EIZNnHj0udn1uQyHkizT4CptCAbWpDNyooajrhoeE=" }, { "title": "Questions/réponses", "img": "https://images.pexels.com/photos/5428826/pexels-photo-5428826.jpeg?auto=compress&cs=tinysrgb&w=600" }], "img": "https://media.istockphoto.com/id/1344903849/fr/photo/les-gens-en-papier-encha%C3%AEnent-avec-les-c%C5%93urs-concept-de-travail-d%C3%A9quipe-et-damour.jpg?b=1&s=612x612&w=0&k=20&c=8NiYWJ0Rmb6aNwLJAFAbx9iynItW2wC06B3C0u2SK6A=" }
   ]
 
   // Stockage dans le local storage
@@ -33,7 +33,7 @@ function App() {
       {/* <Preloader /> */}
       <div className="App">
         <Progressbar setCurrentStep={setCurrentStep} currentStep={currentStep}complete={complete} />
-        <Router>
+        <Router hashType="slash"> {/* Use HashRouter with hashType="slash" */}
           <Routes>
             <Route path="/" element={<Service setCurrentStep={setCurrentStep} setService={setService} />} />
             <Route path="/clientCategory" element={<ClientCategory setCurrentStep={setCurrentStep}  />} />

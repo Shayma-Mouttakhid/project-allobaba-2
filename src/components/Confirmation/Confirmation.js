@@ -21,6 +21,7 @@ export default function Confirmation({
   const { Nom, Prénom, Email, Téléphone } = formData;
   const selectedCategory = localStorage.getItem("selectedCategory");
   const selectedSubCategory = localStorage.getItem("SelectedSubCategory");
+  console.log(selectedSubCategory);
   const handleSave = (notify) => {
 
     
